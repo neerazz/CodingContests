@@ -1,6 +1,8 @@
-package contests.leetcode.biweekly28;
+package biweekly28;
 
-import util.Util;
+import jdk.jshell.execution.Util;
+
+import java.util.Arrays;
 
 class SubrectangleQueries {
 
@@ -18,21 +20,25 @@ class SubrectangleQueries {
                 {9,7,9,4,9}
         };
         SubrectangleQueries subrectangleQueries = new SubrectangleQueries(matrix);
-        Util.print(matrix);
+        print(matrix);
 
         subrectangleQueries.updateSubrectangle(1, 0, 3, 3, 10);
-        Util.print(matrix);
+        print(matrix);
 
         subrectangleQueries.updateSubrectangle(3, 2, 3, 2, 4);
-        Util.print(matrix);
+        print(matrix);
 
         System.out.println(subrectangleQueries.getValue(2, 0)); // return 10
         System.out.println(subrectangleQueries.getValue(2, 2)); // return 5
         System.out.println(subrectangleQueries.getValue(3, 4)); // return 5
 
         subrectangleQueries.updateSubrectangle(1, 4, 1, 4, 10);
-        Util.print(matrix);
+        print(matrix);
 
+    }
+
+    static void print(int[][] nums){
+        System.out.println(Arrays.deepToString(nums));
     }
 
     public void updateSubrectangle(int row1, int col1, int row2, int col2, int newValue) {

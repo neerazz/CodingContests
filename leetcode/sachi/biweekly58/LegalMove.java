@@ -1,4 +1,4 @@
-package contests.leetcode.biweekly58;
+package biweekly58;
 
 public class LegalMove {
 

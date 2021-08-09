@@ -1,4 +1,4 @@
-package contests.leetcode.biweekly58;
+package biweekly58;
 
 /*
 https://leetcode.com/contest/biweekly-contest-58/problems/delete-characters-to-make-fancy-string/

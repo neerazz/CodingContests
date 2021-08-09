@@ -24,27 +24,21 @@ public class SmallerStrings {
     }
 
     private static long getCount(int k, int n, String maxWord) {
-        int[] max = new int[n];
-        int j = n - 1;
-        for (int i = maxWord.length() - 1; i >= 0 && j < n; i--) {
-            max[j--] = maxWord.charAt(i) - 'a';
+        long total = 0, mod = 1_000_000_007;
+        int mid = (n + 1) / 2;
+        char[] maxChars = maxWord.toCharArray();
+        for (int i = 0; i < mid; i++) {
+            int allowedChars = Math.min(maxChars[i] - 'a', k);
+//            Possibility at each index is the number of chars you are away from center to the power k.
+            double poss = Math.pow(k, mid - i - 1);
+            long cur = (long) (poss * allowedChars) % mod;
+            total += cur;
+            total %= mod;
+//            Override the other side of the string;
+            maxChars[n - i - 1] = maxChars[i];
         }
-        int p1 = (n - 1) / 2, p2 = n / 2;
-        int[] cur = new int[n];
-        long total = 0;
-        for (int l = 0; l < n / 2; l++) {
-            for (int i = 0; i < k; i++) {
-                Arrays.fill(cur, p1, p2 + 1, i);
-                int p11 = (n - 1) / 2, p21 = n / 2, curChar =0;
-                while (p11 >= p1 && p21 <= p2 && Arrays.compare(cur, max) < 0 && curChar <= i) {
-                    total++;
-                    cur[p11--] = cur[p21++] = ++curChar;
-                    System.out.println(Arrays.toString(cur));
-                }
-            }
-            p1--;
-            p2++;
-        }
-        return total;
+//        If after overriding all the on the left with the chars with right and the changedChars is still small then
+        if (Arrays.compare(maxChars, maxWord.toCharArray()) < 0) total++;
+        return total % mod;
     }
 }
