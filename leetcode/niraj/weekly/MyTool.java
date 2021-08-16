@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Three Divisors3\n" +
-                        "Maximum Number of Weeks for Which You Can Work4\n" +
-                        "Minimum Garden Perimeter to Collect Enough Apples5\n" +
-                        "Count Number of Special Subsequences"
+                "Number of Strings That Appear as Substrings in Word3\n" +
+                        "Array With Elements Not Equal to Average of Neighbors4\n" +
+                        "Minimum Non-Zero Product of the Array Elements5\n" +
+                        "Last Day Where You Can Still Cross"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"

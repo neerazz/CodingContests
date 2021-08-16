@@ -1,4 +1,4 @@
-package niraj.weekly.weekly253;
+package weekly.weekly253;
 
 import java.util.PriorityQueue;
 
