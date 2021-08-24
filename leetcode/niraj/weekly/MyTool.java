@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Number of Strings That Appear as Substrings in Word3\n" +
-                        "Array With Elements Not Equal to Average of Neighbors4\n" +
-                        "Minimum Non-Zero Product of the Array Elements5\n" +
-                        "Last Day Where You Can Still Cross"
+                "Find Greatest Common Divisor of Array3\n" +
+                        "Find Unique Binary String4\n" +
+                        "Minimize the Difference Between Target and Chosen Elements5\n" +
+                        "Find Array Given Subset Sums"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
