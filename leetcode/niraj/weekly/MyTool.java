@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Find Greatest Common Divisor of Array3\n" +
-                        "Find Unique Binary String4\n" +
-                        "Minimize the Difference Between Target and Chosen Elements5\n" +
-                        "Find Array Given Subset Sums"
+                "Minimum Difference Between Highest and Lowest of K Scores3\n" +
+                        "Find the Kth Largest Integer in the Array4\n" +
+                        "Minimum Number of Work Sessions to Finish the Tasks6\n" +
+                        "Number of Unique Good Subsequences"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"

@@ -21,7 +21,9 @@ public class NumberOfWaysToArriveAtDestination {
             map.computeIfAbsent(to, val -> new ArrayList<>()).add(new long[]{from, time});
         }
         long[][] dp = new long[n][2];
-//        d[i], the shortest distance from i to end and number of possible path from i to start.
+//        d[i] =>
+//              0:-> the shortest distance from start to i,
+//              1 :-> number of possible path from i to start.
         for (int i = 1; i < n; i++) {
             dp[i][0] = Integer.MAX_VALUE;
         }
@@ -29,30 +31,28 @@ public class NumberOfWaysToArriveAtDestination {
         dp[0][0] = 0;
         dp[0][1] = 1;
         PriorityQueue<long[]> pq = new PriorityQueue<>((v1, v2) -> Long.compare(v1[2], v2[2]));
-        add(0, pq, map, 0);
-        while(!pq.isEmpty()){
+//        All the connections from 0.
+        for (long[] node : map.get(0)) {
+            pq.add(new long[]{0, node[0], node[1]});
+        }
+        while (!pq.isEmpty()) {
             long[] poll = pq.poll();
             int src = (int) poll[0], dest = (int) poll[1];
-            long dist = poll[2];
-//            This is the key.
-//                If you can reach the dest point in with the current time then, this ia valid shortest path.
-            if(dist <= dp[dest][0]){
-                dp[dest][1] +=  dp[src][1];
+            long soFarDist = poll[2];
+//            "This is the key": If you can reach the current dest point in with the best time, this is valid shortest path.
+            if (soFarDist <= dp[dest][0]) {
+                dp[dest][1] += dp[src][1];
                 dp[dest][1] %= mod;
             }
 //                If you can reach the destination in less than the previous best then add the dest to pq, and start exploring it again.
-            if(dist < dp[dest][0]){
-                dp[dest][0] = dist;
-                add(dest, pq, map, dist);
+            if (soFarDist < dp[dest][0]) {
+                dp[dest][0] = soFarDist;
+                for (long[] dep : map.get(dest)) {
+                    pq.add(new long[]{dest, dep[0], soFarDist + dep[1]});
+                }
             }
         }
 //        return the number of possibility of reaching n-1 point in the shortest distance.
         return (int) (dp[n - 1][1] % mod);
-    }
-
-    private static void add(int cur, PriorityQueue<long[]> pq, Map<Integer, List<long[]>> map, long soFarDist) {
-        for (long[] des : map.getOrDefault(cur, new ArrayList<>())) {
-            pq.add(new long[]{cur, des[0], des[1] + soFarDist});
-        }
     }
 }
