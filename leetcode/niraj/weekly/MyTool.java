@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Minimum Difference Between Highest and Lowest of K Scores3\n" +
-                        "Find the Kth Largest Integer in the Array4\n" +
-                        "Minimum Number of Work Sessions to Finish the Tasks6\n" +
-                        "Number of Unique Good Subsequences"
+                "Count Special Quadruplets3\n" +
+                        "The Number of Weak Characters in the Game4\n" +
+                        "First Day Where You Have Been in All the Rooms5\n" +
+                        "GCD Sort of an Array"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
