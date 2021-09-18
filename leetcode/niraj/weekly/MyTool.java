@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Count Special Quadruplets3\n" +
-                        "The Number of Weak Characters in the Game4\n" +
-                        "First Day Where You Have Been in All the Rooms5\n" +
-                        "GCD Sort of an Array"
+                "Count Number of Pairs With Absolute Difference K3\n" +
+                        "Find Original Array From Doubled Array4\n" +
+                        "Maximum Earnings From Taxi5\n" +
+                        "Minimum Number of Operations to Make Array Continuous"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
