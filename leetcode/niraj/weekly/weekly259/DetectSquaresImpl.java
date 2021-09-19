@@ -34,8 +34,8 @@ public class DetectSquaresImpl {
             int count = 0;
             for (int i = 1; i <= 1000; i++) {
 //                If the given point is considered as top left point
-                if (isValid(a - 1, b) && isValid(a, b + i) && isValid(a - i, b + i)) {
-                    count += (data[a - 1][b] * data[a][b + i] * data[a - 1][b + 1]);
+                if (isValid(a - i, b) && isValid(a, b + i) && isValid(a - i, b + i)) {
+                    count += (data[a - i][b] * data[a][b + i] * data[a - i][b + i]);
                 }
 //                If the given point is considered as top right point
                 if (isValid(a, b - i) && isValid(a - i, b - i) && isValid(a - i, b)) {
@@ -43,7 +43,7 @@ public class DetectSquaresImpl {
                 }
 //                If the given point is considered as bottom left
                 if (isValid(a, b + i) && isValid(a + i, b + i) && isValid(a + i, b)) {
-                    count += (data[a][b + 1] * data[a + i][b + i] * data[a + i][b]);
+                    count += (data[a][b + i] * data[a + i][b + i] * data[a + i][b]);
                 }
 //                If the given point is considered as bottom right
                 if (isValid(a + i, b) && isValid(a + i, b - i) && isValid(a, b - i)) {
