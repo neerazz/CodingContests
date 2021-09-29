@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Final Value of Variable After Performing Operations3\n" +
-                        "Sum of Beauty in the Array4\n" +
-                        "Detect Squares5\n" +
-                        "Longest Subsequence Repeated k Times"
+                "Maximum Difference Between Increasing Elements3\n" +
+                        "Grid Game4\n" +
+                        "Check if Word Can Be Placed In Crossword5\n" +
+                        "The Score of Students Solving Math Expression"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
