@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Minimum Moves to Convert String3\n" +
-                        "Find Missing Observations4\n" +
-                        "Stone Game IX5\n" +
-                        "Smallest K-Length Subsequence With Occurrences of a Letter"
+                "Two Out of Three3\n" +
+                        "Minimum Operations to Make a Uni-Value Grid4\n" +
+                        "Stock Price Fluctuation5\n" +
+                        "Partition Array Into Two Arrays to Minimize Sum Difference"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
