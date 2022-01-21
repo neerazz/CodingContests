@@ -13,10 +13,10 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         getContest(
-                "Find Target Indices After Sorting Array3\n" +
-                        "K Radius Subarray Averages4\n" +
-                        "Removing Minimum and Maximum From Array5\n" +
-                        "Find All People With Secret"
+                "A Number After a Double Reversal3\n" +
+                        "Execution of All Suffix Instructions Staying in a Grid4\n" +
+                        "Intervals Between Identical Elements5\n" +
+                        "Recover the Original Array"
         );
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
