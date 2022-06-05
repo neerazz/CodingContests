@@ -1,8 +1,14 @@
 package weekly;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -12,12 +18,13 @@ public class MyTool {
 
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
-        getContest(
-                "A Number After a Double Reversal3\n" +
-                        "Execution of All Suffix Instructions Staying in a Grid4\n" +
-                        "Intervals Between Identical Elements5\n" +
-                        "Recover the Original Array"
+        var names = getContest(
+                "Min Max Game3\n" +
+                        "Partition Array Such That Maximum Difference Is K4\n" +
+                        "Replace Elements in an Array5\n" +
+                        "Design a Text Editor"
         );
+        createFiles("weekly", 286, names);
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
 ////                "Product of Array Except Self",
@@ -30,7 +37,55 @@ public class MyTool {
         ).forEach(System.out::println);
     }
 
-    static int getMax(int[] counts){
+    private static void createFiles(String frequency, int number, List<String> names) {
+        Path path = Path.of("leetcode", "niraj", frequency, frequency + number);
+        File file = path.toFile();
+        if (!file.exists()) file.mkdirs();
+        System.out.println("Creating file at Directory: " + path);
+        for (String name : names) {
+            try (FileWriter writer = new FileWriter(Path.of(path.toAbsolutePath().toString(), name + ".java").toFile())) {
+                writer.write(getFileTemplate(frequency, number, name));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static String getFileTemplate(String type, int number, String className) {
+        String template = """
+                package %{packageName};
+                                
+                import java.util.*;
+                import java.io.*;
+                                
+                /**
+                 * Created on:  %{time}
+                 * Ref: %{reference}
+                 */
+                                
+                public class %{className} {
+                                
+                    public static void main(String[] args) {
+                                
+                    }
+                                
+                }
+                """;
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.SHORT));
+        Map<String, String> mapping = Map.of(
+                "packageName", String.format("%s.%s", type, type + number),
+                "reference", String.format("https://leetcode.com/contest/%s-contest-%d", type, number),
+                "time", dateTime,
+                "className", className
+        );
+        String finalString = template;
+        for (Map.Entry<String, String> entry : mapping.entrySet()) {
+            finalString = finalString.replace("%{" + entry.getKey() + "}", entry.getValue());
+        }
+        return finalString;
+    }
+
+    static int getMax(int[] counts) {
         return Arrays.stream(counts).max().getAsInt();
     }
 
