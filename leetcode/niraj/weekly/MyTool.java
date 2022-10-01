@@ -19,12 +19,12 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         var names = getContest(
-                "Min Max Game3\n" +
-                        "Partition Array Such That Maximum Difference Is K4\n" +
-                        "Replace Elements in an Array5\n" +
-                        "Design a Text Editor"
+                "Remove Letter To Equalize Frequency3\n" +
+                        "Longest Uploaded Prefix4\n" +
+                        "Bitwise XOR of All Pairings5\n" +
+                        "Number of Pairs Satisfying Inequality"
         );
-        createFiles("weekly", 286, names);
+        createFiles("biweekly", 88, names);
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
 ////                "Product of Array Except Self",
@@ -60,7 +60,7 @@ public class MyTool {
                                 
                 /**
                  * Created on:  %{time}
-                 * Ref: %{reference}
+                 * Ref: <a href="%{reference}">%{className}</a>
                  */
                                 
                 public class %{className} {
