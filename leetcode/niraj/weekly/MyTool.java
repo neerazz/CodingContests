@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -19,22 +21,32 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         var names = getContest(
-                "Remove Letter To Equalize Frequency3\n" +
-                        "Longest Uploaded Prefix4\n" +
-                        "Bitwise XOR of All Pairings5\n" +
-                        "Number of Pairs Satisfying Inequality"
+                "Number of Changing Keys2\n" +
+                        "Find the Maximum Number of Elements in Subset4\n" +
+                        "Alice and Bob Playing Flower Game5\n" +
+                        "Minimize OR of Remaining Elements Using Operations"
         );
-        createFiles("biweekly", 88, names);
+        createFiles("weekly", 382, names);
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
 ////                "Product of Array Except Self",
 //        );
-        getReplaced(
-                Arrays.asList("[[\"+\",\"+\",\"+\"],[\".\",\".\",\".\"],[\"+\",\"+\",\"+\"]]"),
-                Arrays.asList("[", "{"),
-                Arrays.asList("\"", "'"),
-                Arrays.asList("]", "}")
-        ).forEach(System.out::println);
+//        getReplaced(
+//                Arrays.asList("[[\"+\",\"+\",\"+\"],[\".\",\".\",\".\"],[\"+\",\"+\",\"+\"]]"),
+//                Arrays.asList("[", "{"),
+//                Arrays.asList("\"", "'"),
+//                Arrays.asList("]", "}")
+//        ).forEach(System.out::println);
+    }
+
+    private static List<String> getContest(String input) {
+        String[] strings = input.split("\n");
+        List<String> names = new ArrayList<>();
+        for (int i = 0; i < strings.length; i++) {
+            names.add(getCamelCase(i != strings.length - 1 ? strings[i].substring(0, strings[i].length() - 1) : strings[i]));
+        }
+        names.forEach(System.out::println);
+        return names;
     }
 
     private static void createFiles(String frequency, int number, List<String> names) {
@@ -49,6 +61,26 @@ public class MyTool {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static String getCamelCase(String input) {
+        StringBuilder sb = new StringBuilder();
+        boolean capitalize = true;
+        for (char c : input.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                if (sb.length() == 0 && Character.isDigit(c)) {
+                    continue;
+                } else if (capitalize) {
+                    sb.append(Character.toUpperCase(c));
+                    capitalize = false;
+                } else {
+                    sb.append(c);
+                }
+            } else {
+                capitalize = true;
+            }
+        }
+        return sb.toString();
     }
 
     static String getFileTemplate(String type, int number, String className) {
@@ -89,49 +121,12 @@ public class MyTool {
         return Arrays.stream(counts).max().getAsInt();
     }
 
-    private static List<String> getContest(String input) {
-        String[] strings = input.split("\n");
-        List<String> names = new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
-            names.add(getCamelCase(i != strings.length - 1 ? strings[i].substring(0, strings[i].length() - 1) : strings[i]));
-        }
-        names.forEach(System.out::println);
-        return names;
-    }
-
     private static void printCamelCase(String... input) {
         Arrays.stream(input).map(MyTool::getCamelCase).forEach(System.out::println);
     }
 
-    private static String getCamelCase(String input) {
-        StringBuilder sb = new StringBuilder();
-        boolean capitalize = true;
-        for (char c : input.toCharArray()) {
-            if (Character.isLetterOrDigit(c)) {
-                if (sb.length() == 0 && Character.isDigit(c)) {
-                    continue;
-                } else if (capitalize) {
-                    sb.append(Character.toUpperCase(c));
-                    capitalize = false;
-                } else {
-                    sb.append(c);
-                }
-            } else {
-                capitalize = true;
-            }
-        }
-        return sb.toString();
-    }
-
     private static List<String> getReplaced(List<String> input, List<String>... replaces) {
         return input.parallelStream().map(val -> getReplaced(val, replaces)).collect(Collectors.toList());
-    }
-
-    private static String getReplaced(String input) {
-        return input
-                .replace("[", "{")
-                .replace("]", "}")
-                .replace("\"", "'");
     }
 
     private static String getReplaced(String input, List<String>... replaces) {
@@ -139,5 +134,12 @@ public class MyTool {
             input = input.replace(replace.get(0), replace.get(1));
         }
         return input;
+    }
+
+    private static String getReplaced(String input) {
+        return input
+                .replace("[", "{")
+                .replace("]", "}")
+                .replace("\"", "'");
     }
 }
