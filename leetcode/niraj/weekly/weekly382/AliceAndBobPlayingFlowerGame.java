@@ -31,5 +31,4 @@ public class AliceAndBobPlayingFlowerGame {
         }
         return count;
     }
-
 }

@@ -21,12 +21,13 @@ public class MyTool {
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
         var names = getContest(
-                "Number of Changing Keys2\n" +
-                        "Find the Maximum Number of Elements in Subset4\n" +
-                        "Alice and Bob Playing Flower Game5\n" +
-                        "Minimize OR of Remaining Elements Using Operations"
+                "Ant on the Boundary3\n" +
+                        "Minimum Time to Revert Word to Initial State I4\n" +
+                        "Find the Grid of Region Average5\n" +
+                        "Minimum Time to Revert Word to Initial State II"
         );
-        createFiles("weekly", 382, names);
+//        createFiles("biweekly", 123, names);
+        createFiles("weekly", 383, names);
 //        printCamelCase(
 //                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
 ////                "Product of Array Except Self",
