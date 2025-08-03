@@ -20,18 +20,22 @@ public class MyTool {
 
     public static void main(String[] args) {
         System.out.println("************************* Contest ***********************************");
-        var names = getContest(
-                "Modify the Matrix2\n" +
-                        "Number of Subarrays That Match a Pattern I4\n" +
-                        "Maximum Palindromes After Operations5\n" +
-                        "Number of Subarrays That Match a Pattern II"
+        var names = getContest("\n" +
+                "Remove Digit From Number to Maximize Result\n" +
+                "3\n" +
+                "Minimum Consecutive Cards to Pick Up\n" +
+                "4\n" +
+                "K Divisible Elements Subarrays\n" +
+                "5\n" +
+                "Total Appeal of A String\n" +
+                "6");
+        System.out.println(names);
+//        createFiles("biweekly", 124, names);
+//        createFiles("weekly", 461, names);
+        printCamelCase(
+                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
+//                "Product of Array Except Self",
         );
-//        createFiles("biweekly", 123, names);
-        createFiles("weekly", 384, names);
-//        printCamelCase(
-//                "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold"
-////                "Product of Array Except Self",
-//        );
 //        getReplaced(
 //                Arrays.asList("[[\"+\",\"+\",\"+\"],[\".\",\".\",\".\"],[\"+\",\"+\",\"+\"]]"),
 //                Arrays.asList("[", "{"),
@@ -87,30 +91,25 @@ public class MyTool {
     static String getFileTemplate(String type, int number, String className) {
         String template = """
                 package %{packageName};
-                                
+                
                 import java.util.*;
                 import java.io.*;
-                                
+                
                 /**
                  * Created on:  %{time}
                  * Ref: <a href="%{reference}">%{className}</a>
                  */
-                                
+                
                 public class %{className} {
-                                
+                
                     public static void main(String[] args) {
-                                
+                
                     }
-                                
+                
                 }
                 """;
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.SHORT));
-        Map<String, String> mapping = Map.of(
-                "packageName", String.format("%s.%s", type, type + number),
-                "reference", String.format("https://leetcode.com/contest/%s-contest-%d", type, number),
-                "time", dateTime,
-                "className", className
-        );
+        Map<String, String> mapping = Map.of("packageName", String.format("%s.%s", type, type + number), "reference", String.format("https://leetcode.com/contest/%s-contest-%d", type, number), "time", dateTime, "className", className);
         String finalString = template;
         for (Map.Entry<String, String> entry : mapping.entrySet()) {
             finalString = finalString.replace("%{" + entry.getKey() + "}", entry.getValue());
@@ -138,9 +137,6 @@ public class MyTool {
     }
 
     private static String getReplaced(String input) {
-        return input
-                .replace("[", "{")
-                .replace("]", "}")
-                .replace("\"", "'");
+        return input.replace("[", "{").replace("]", "}").replace("\"", "'");
     }
 }
